@@ -1,0 +1,4 @@
+# .env often contain passwords
+.env
+# Data are stored in this folder
+lwt_db_data
