@@ -7,6 +7,8 @@ services:
       - db
     links:
       - db
+    volumes:
+      - ./media:/var/www/media
     ports:
       - "8010:80"
     restart: unless-stopped
