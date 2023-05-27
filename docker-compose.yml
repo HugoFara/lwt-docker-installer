@@ -8,9 +8,9 @@ services:
     links:
       - db
     volumes:
-      - ./media:/var/www/media
+      - ${WEB_MEDIA_PATH}:/var/www/media
     ports:
-      - "8010:80"
+      - "${WEB_PORT}:80"
     restart: unless-stopped
   db:
     container_name: lwt_db
@@ -21,4 +21,4 @@ services:
     image: mariadb:10.7
     restart: unless-stopped
     volumes:
-        - ./lwt_db_data:/var/lib/mysql
+        - ${DB_DATA_PATH}:/var/lib/mysql
