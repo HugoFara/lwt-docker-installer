@@ -25,9 +25,9 @@ Formally, you only need:
 For copy/pasters:
 
 ```bash
-git clone hugofara/lwt-docker-installer # download this repository
+git clone https://github.com/hugofara/lwt-docker-installer # download this repository
 cd lwt-docker-installer
-cp .env.sample .env                     # don't hesistate to edit .env!
+cp .env.sample .env                                        # don't hesitate to edit .env!
 docker compose up -d
 ```
 
