@@ -12,10 +12,10 @@ This repository is a Docker installer, the main repository can be found at
 
 ## Prerequisites
 
-This is a Docker installer, we recommand to use
-[Docker Desktop](https://docs.docker.com/desktop/) for any unexperienced user.
+This is a Docker installer, we recommend using
+[Docker Desktop](https://docs.docker.com/desktop/) for unexperienced user.
 
-Formally, you only need:
+For people familiar with Docker, you only need:
 
 * [Docker](https://www.docker.com/)
 * [Docker Compose](https://docs.docker.com/compose/install/) plugin
@@ -37,7 +37,19 @@ Manual instructions:
 2. Create the ``.env`` file and customize it to your convenience
 3. Run ``docker compose up -d``
 
-By default the server can be accessed on port 8010 (<http://localhost:8010>).
+By default the server can be accessed on port 8010 (<http://localhost:8010/lwt>). 
+If you are using LWT 2.9.1 or older, you may access it on <http://localhost:8010> instead,
+as LWT was moved from the main folder to `lwt/`.
+
+## Update
+
+As for any Docker container, do to the Docker folder and run:
+
+```bash
+docker compose down
+docker composer pull
+docker compose up -d
+```
 
 ## Remove
 
