@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   web:
     image: ghcr.io/hugofara/lwt:master
@@ -18,7 +17,7 @@ services:
         MYSQL_ALLOW_EMPTY_PASSWORD: "no"
         MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
     hostname: ${DB_HOSTNAME}
-    image: mariadb:10.7
+    image: mariadb:10.11
     restart: unless-stopped
     volumes:
         - ${DB_DATA_PATH}:/var/lib/mysql
