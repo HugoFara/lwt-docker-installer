@@ -28,7 +28,8 @@ For copy/pasters:
 git clone https://github.com/hugofara/lwt-docker-installer # download this repository
 cd lwt-docker-installer
 cp .env.sample .env                                        # don't hesitate to edit .env!
-docker compose up -d
+docker compose up -d && \
+echo "Go to http://localhost:8010/lwt"
 ```
 
 Manual instructions:
@@ -36,6 +37,7 @@ Manual instructions:
 1. Copy the repository [hugofara/lwt-docker-installer](https://github.com/hugofara/lwt-docker-installer)
 2. Create the ``.env`` file and customize it to your convenience
 3. Run ``docker compose up -d``
+4. Wait a bit, and visit <http://localhost:8010/lwt>.
 
 By default the server can be accessed on port 8010 (<http://localhost:8010/lwt>). 
 If you are using LWT 2.9.1 or older, you may access it on <http://localhost:8010> instead,
