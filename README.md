@@ -10,10 +10,23 @@ This repository is a Docker installer, the main repository can be found at
 
 [![LWT logo](https://github.com/HugoFara/lwt/raw/master/img/lwt_icon_big.jpg)](https://github.com/HugoFara/lwt)
 
+## What's New in 3.0.0
+
+LWT 3.0.0 is a complete rewrite of the application:
+
+- **Modern frontend** with Alpine.js, TypeScript, and Bulma CSS (jQuery and iframes removed)
+- **Multi-user support** with registration, login, OAuth, and per-user data isolation
+- **InnoDB database** with foreign key constraints and full UTF8MB4 encoding
+- **REST API** at `/api/v1` for all resources
+- **Extensible parsers** for Japanese (MeCab), Chinese (Jieba), and standard languages
+- **New features**: term notes, inline Markdown, RSS feeds, Gutenberg book import, EPUB support, local dictionaries, dark theme
+
+See the [full changelog](https://github.com/HugoFara/lwt/blob/main/CHANGELOG.md) for details.
+
 ## Prerequisites
 
 This is a Docker installer, we recommend using
-[Docker Desktop](https://docs.docker.com/desktop/) for unexperienced user.
+[Docker Desktop](https://docs.docker.com/desktop/) for inexperienced users.
 
 For people familiar with Docker, you only need:
 
@@ -25,44 +38,53 @@ For people familiar with Docker, you only need:
 For copy/pasters:
 
 ```bash
-git clone https://github.com/hugofara/lwt-docker-installer # download this repository
+git clone https://github.com/hugofara/lwt-docker-installer
 cd lwt-docker-installer
-cp .env.sample .env                                        # don't hesitate to edit .env!
-docker compose up -d && \
-echo "Go to http://localhost:8010/lwt"
-```
-
-Manual instructions:
-
-1. Copy the repository [hugofara/lwt-docker-installer](https://github.com/hugofara/lwt-docker-installer)
-2. Create the ``.env`` file and customize it to your convenience
-3. Run ``docker compose up -d``
-4. Wait a bit, and visit <http://localhost:8010/lwt>.
-
-By default the server can be accessed on port 8010 (<http://localhost:8010/lwt>). 
-If you are using LWT 2.9.1 or older, you may access it on <http://localhost:8010> instead,
-as LWT was moved from the main folder to `lwt/`.
-
-## Update
-
-As for any Docker container, do to the Docker folder and run:
-
-```bash
-docker compose down
-docker composer pull
+cp .env.sample .env    # edit .env to set your password and preferences
 docker compose up -d
 ```
 
-## Remove
+Then visit <http://localhost:8010>.
 
-To remove the created containers go the the created folder and run:
+Manual instructions:
+
+1. Clone this repository
+2. Copy `.env.sample` to `.env` and customize it (at minimum, change `DB_PASSWORD`)
+3. Run `docker compose up -d`
+4. Visit <http://localhost:8010>
+
+## Multi-user mode
+
+To enable user registration and login, set `MULTI_USER_ENABLED=true` in your `.env` file. The first registered user automatically becomes the administrator.
+
+## Update
 
 ```bash
 docker compose down
+docker compose pull
+docker compose up -d
+```
+
+Database migrations run automatically on startup.
+
+## Remove
+
+To remove the created containers:
+
+```bash
+docker compose down
+```
+
+Your data is preserved in `./lwt_db_data`. To delete everything including data:
+
+```bash
+docker compose down -v
+rm -rf lwt_db_data
 ```
 
 ## Data storage
 
-All user data will be stored in local folder `./lwt_db_data`.
+- **Database**: stored in `./lwt_db_data` (configurable via `DB_DATA_PATH` in `.env`)
+- **Media files**: stored in `./media` (configurable via `WEB_MEDIA_PATH` in `.env`)
 
 **Let's learn new languages!**
