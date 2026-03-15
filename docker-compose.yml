@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/hugofara/lwt:3.0.0
+    image: ghcr.io/hugofara/lwt:latest
     container_name: lwt
     depends_on:
       - db
