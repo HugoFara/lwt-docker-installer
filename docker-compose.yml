@@ -14,6 +14,13 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-root}
       DB_NAME: ${DB_DATABASE:-learning-with-texts}
       MULTI_USER_ENABLED: ${MULTI_USER_ENABLED:-false}
+      # Reverse-proxy / TLS offloading.
+      # APP_URL: explicit public origin (https://your-domain.example).
+      # TRUST_PROXY: honour X-Forwarded-Proto / X-Forwarded-Host from
+      # the front-end proxy (Traefik, Caddy, nginx, ...). Default true.
+      # See https://hugofara.github.io/lwt/guide/post-installation#reverse-proxy
+      APP_URL: ${APP_URL:-}
+      TRUST_PROXY: ${TRUST_PROXY:-true}
     restart: unless-stopped
 
   db:
